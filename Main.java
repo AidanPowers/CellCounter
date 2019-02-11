@@ -1,6 +1,10 @@
+import java.io.IOException;
+
 class Main {
-  public static void main(String[] args) {
-    System.out.println("Hello world!");
-    //all
+  public static void main(String[] args) throws IOException {
+    System.out.println("Main");
+    ImageTester trial = new ImageTester();
+    trial.find();
+    trial.toReadable();
   }
 }
