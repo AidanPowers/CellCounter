@@ -22,6 +22,9 @@ class ImageTester {
       for (int i = 0; i<img.getHeight();i = i + 1){
           for (int j = 0; j < img.getWidth(); j = j + 1){
               pic[j][i] = img.getRGB(j,i)& 0xFF;
+              if (pic[j][i] == 0){
+                  isScannned[j][i] = true;
+              }
               sb.append(img.getRGB(j,i)& 0xFF);
               sb.append(",");
 
@@ -42,7 +45,7 @@ class ImageTester {
         if (isScannned[y][x]) {
             return false;
         }
-        if (pic[y][x] > 1) {
+        if (pic[y][x] != 0) {
             return false;
         }
         isScannned[y][x] = true;
@@ -60,9 +63,10 @@ class ImageTester {
   }
   public void find(){
       for (int i = 0; i<pic.length;i = i + 1){
-          for (int j = 0; j < pic[i].length-2000; j = j + 1){
+          for (int j = 0; j < pic[i].length; j = j + 1){
             if (!isScannned[i][j]){
                 sweep(i,j);
+                System.out.println("workin");
             }
           }
       }
@@ -74,7 +78,7 @@ class ImageTester {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i<pic.length;i = i + 1){
-            for (int j = 0; j < pic[i].length-2000; j = j + 1){
+            for (int j = 0; j < pic[i].length; j = j + 1){
                 if (isScannned[i][j]){
 
                     sb.append("1");
