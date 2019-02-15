@@ -123,7 +123,7 @@ class ImageTester {
         return layer;
 
     }
-    public void pulseStarter(int x, int y, int i){
+    private void pulseStarter(int x, int y, int i){
         pulse(x+1, y+1,i++);
         pulse(x+1, y-1,i++);
         pulse(x+1, y,i++);
@@ -133,7 +133,7 @@ class ImageTester {
         pulse(x-1, y-1,i++);
         pulse(x-1, y,i++);
     }
-    public void pulse(int x, int y, int i){
+    private void pulse(int x, int y, int i){
         layer++;
         if (layer>3000)
         {
@@ -182,7 +182,7 @@ class ImageTester {
         }
         //System.out.println(cells + " " + fakes + " " + (cells-fakes));
     }
-    public void reset(){
+    private void reset(){
         cells = 0;
         fakes=0;
         for (int i = 0; i<pic.length;i = i + 1){
@@ -200,8 +200,8 @@ class ImageTester {
     public void round(){
         boolean[][] wasScannned = new boolean[pic.length][pic[0].length];
         for (int i = 0; i<pic.length;i = i + 1){
-            for (int j = 0; j < pic[i].length; j = j + 1){
-                wasScannned[i][j]=isScannned[i][j];
+            if (pic[i].length >= 0) {
+                System.arraycopy(isScannned[i], 0, wasScannned[i], 0, pic[i].length);
             }
         }
         for (int i = 1; i<pic.length-1;i = i + 1){
