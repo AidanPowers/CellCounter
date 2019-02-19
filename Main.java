@@ -13,7 +13,7 @@ class Main {
     File[] names = folder.listFiles((dir, name) -> !name.equals(".DS_Store"));
     System.out.println(names.length);
 
-    ImageTester[] inputs= new ImageTester[names.length-15];
+    ImageTester[] inputs= new ImageTester[names.length];
     int[] values= new int[inputs.length];
 
     for ( int i = 0; i< inputs.length;i++){

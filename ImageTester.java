@@ -22,7 +22,7 @@ class ImageTester {
     private String currentImage;
 
     public ImageTester(String image) throws IOException {
-        System.out.println("Image Tester");
+        System.out.println("Image Testing "+image);
 //test
         currentImage = image;
         BufferedImage img = ImageIO.read(new File(image));
@@ -315,7 +315,8 @@ class ImageTester {
     }
     //https://stackoverflow.com/questions/10767471/convert-2d-array-in-java-to-image
     public void writeImage(int Name) {
-        String path = "Outputs/Seen"+Name+".png";
+        int folderLoc = currentImage.indexOf("/")+1;
+        String path = "Outputs/Seen"+currentImage.replaceAll(" ","").replace(".JPG","").substring(folderLoc)+".png";
         BufferedImage image = new BufferedImage(outputImage.length, outputImage[0].length, BufferedImage.TYPE_INT_RGB);
         for (int x = 0; x < outputImage.length; x++) {
             for (int y = 0; y < outputImage[0].length; y++) {
@@ -333,7 +334,8 @@ class ImageTester {
         }
     }
     public void writeOrigImage(int Name) {
-        String path = "Outputs/Orig"+Name+".png";
+        int folderLoc = currentImage.indexOf("/")+1;
+        String path = "Outputs/Orig"+currentImage.replaceAll(" ","").replace(".JPG","").substring(folderLoc)+".png";
         BufferedImage image = new BufferedImage(pic.length, pic[0].length, BufferedImage.TYPE_INT_RGB);
         for (int x = 0; x < pic.length; x++) {
             for (int y = 0; y < pic[0].length; y++) {
